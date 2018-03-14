@@ -49,7 +49,8 @@ function getForecast(city = 'stockholm') {
             });
             document.getElementById('city-input').value = json.location.name;
         }).catch(err => {
-            document.getElementById('city-input').value = 'Try again';
+            document.getElementById('city-input').value = 'Spell properly';
+            document.querySelector('#city').textContent = 'Y U NO forecast?';
             console.log('error:', err.message);
         });
 }
