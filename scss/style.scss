@@ -5,12 +5,13 @@
   padding: 0;
   text-align: center;
   font-family: "Saira Condensed", sans-serif;
-  color: rgb(53, 51, 71);
+  color: rgb(34, 33, 44);
 }
 body {
   background-image: url("https://images.unsplash.com/photo-1432071315934-33a387ee0437?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d70f20b108c95f729648d41a30a9fcf&auto=format&fit=crop&w=3300&q=80");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .site-wrapper {
@@ -51,6 +52,8 @@ body {
       border: none;
       padding: 10px;
       flex: 1;
+      background-color: rgba(255, 255, 255, 0.5);
+      -webkit-backdrop-filter: blur(5px);
     }
     input:first-of-type {
       border-radius: 25px 0 0 25px;
@@ -78,12 +81,15 @@ body {
 
 .current-day,
 .forecast-wrapper {
-  color: rgb(53, 51, 71);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 5px;
   padding: 10px;
   margin: 0 20px;
+  @supports (-webkit-backdrop-filter: blur()) {
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 .forecast-wrapper {
@@ -112,7 +118,7 @@ body {
   }
   .conditions,
   .temp {
-    font-size: 5em;
+    font-size: 6em;
     @include breakpoint(smartphone-big) {
       font-size: 4em;
     }
@@ -126,6 +132,7 @@ body {
   .conditions {
     flex: 1 1 50%;
   }
+
   .misc {
     display: flex;
     align-content: center;
