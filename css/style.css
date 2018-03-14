@@ -146,7 +146,6 @@ body .footer {
 
 .forecast-day.current .temp,
 .forecast-day.current .conditions {
-  border: 2px solid red;
   font-size: 4em;
 }
 

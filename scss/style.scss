@@ -106,7 +106,6 @@ body {
     justify-content: center;
     .temp,
     .conditions {
-      border: 2px solid red;
       font-size: 4em;
       @include breakpoint(tablet) {
         font-size: 3em;
