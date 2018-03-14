@@ -5,7 +5,7 @@
   padding: 0;
   text-align: center;
   font-family: "Saira Condensed", sans-serif;
-  color: rgb(34, 33, 44);
+  color: rgb(34, 34, 44);
 }
 body {
   background-image: url("https://images.unsplash.com/photo-1432071315934-33a387ee0437?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d70f20b108c95f729648d41a30a9fcf&auto=format&fit=crop&w=3300&q=80");
@@ -116,11 +116,15 @@ body {
   .date {
     display: none;
   }
-  .conditions,
   .temp {
     font-size: 6em;
+    align-self: center;
+  }
+  .conditions {
+    font-size: 3em;
+    align-self: center;
     @include breakpoint(smartphone-big) {
-      font-size: 4em;
+      font-size: 2em;
     }
     @include breakpoint(smartphone-big) {
       flex: 1 1;
@@ -144,6 +148,7 @@ body {
     }
   }
   .misc * {
+    text-align: left;
     padding: 0 10px;
   }
   .icon {
@@ -168,7 +173,6 @@ body {
   }
   .temp {
     font-size: 2em;
-    color: rgb(53, 51, 71);
   }
   .misc {
     font-size: 0.8em;
@@ -177,6 +181,7 @@ body {
 
 .icon {
   object-fit: contain;
+  align-self: center;
 }
 .sunrise,
 .sunset {

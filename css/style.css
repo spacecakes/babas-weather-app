@@ -3,7 +3,7 @@
   padding: 0;
   text-align: center;
   font-family: "Saira Condensed", sans-serif;
-  color: #22212c;
+  color: #22222c;
 }
 
 body {
@@ -152,21 +152,26 @@ body {
   display: none;
 }
 
-.current-day .conditions,
 .current-day .temp {
   font-size: 6em;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.current-day .conditions {
+  font-size: 3em;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 @media (max-width: 640px) {
-  .current-day .conditions,
-  .current-day .temp {
-    font-size: 4em;
+  .current-day .conditions {
+    font-size: 2em;
   }
 }
 
 @media (max-width: 640px) {
-  .current-day .conditions,
-  .current-day .temp {
+  .current-day .conditions {
     -webkit-box-flex: 1;
         -ms-flex: 1 1;
             flex: 1 1;
@@ -174,8 +179,7 @@ body {
 }
 
 @media (max-width: 480px) {
-  .current-day .conditions,
-  .current-day .temp {
+  .current-day .conditions {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
@@ -212,6 +216,7 @@ body {
 }
 
 .current-day .misc * {
+  text-align: left;
   padding: 0 10px;
 }
 
@@ -251,7 +256,6 @@ body {
 
 .forecast-day .temp {
   font-size: 2em;
-  color: #353347;
 }
 
 .forecast-day .misc {
@@ -261,6 +265,8 @@ body {
 .icon {
   -o-object-fit: contain;
      object-fit: contain;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 .sunrise,
