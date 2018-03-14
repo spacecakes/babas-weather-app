@@ -1,3 +1,5 @@
+@import "mixins";
+
 * {
   margin: 0;
   padding: 0;
@@ -11,11 +13,15 @@ body {
 }
 
 .forecast-wrapper {
+  color: rgb(53, 51, 71);
   max-width: 1000px;
   margin: 100px auto;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  @include breakpoint(smartphone-small) {
+    grid-template-columns: 1fr;
+  }
   .title {
     grid-area: 1/1/ 1/-1;
     font-family: "Lobster", cursive;
@@ -44,7 +50,7 @@ body {
   align-content: space-between;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   * {
-    padding: 10px;
+    padding: 5px;
   }
   .icon {
     object-fit: contain;
@@ -73,22 +79,33 @@ body {
     grid-row: 3;
     grid-column: 1/-1;
     flex-flow: row;
+    flex-wrap: wrap;
     align-items: center;
     .temp,
     .conditions {
-      font-size: 3em;
+      font-size: 4em;
+      @include breakpoint(tablet) {
+        font-size: 3em;
+      }
+      @include breakpoint(smartphone-big) {
+        font-size: 2.5em;
+      }
     }
     .conditions {
       flex: 1;
+      text-align: left;
     }
     .misc {
-      flex: 1;
+      border-top: 2px solid rgba(255, 255, 255, 0.5);
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: flex-end;
+      flex: 1 1 100%;
     }
     .misc p {
-      flex: 0 40%;
+      font-size: 1.2em;
+      flex: 1;
     }
     .date,
     .sunset,
