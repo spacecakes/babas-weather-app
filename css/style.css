@@ -31,7 +31,7 @@ body {
 
 .site-wrapper .title {
   font-family: "Lobster", cursive;
-  font-size: 5em;
+  font-size: 5.5em;
 }
 
 .site-wrapper #city {
@@ -154,6 +154,24 @@ body {
   }
 }
 
+@media (max-width: 640px) {
+  .current-day .conditions,
+  .current-day .temp {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1;
+            flex: 1 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .current-day .conditions,
+  .current-day .temp {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+  }
+}
+
 .current-day .conditions {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 50%;
@@ -164,20 +182,20 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -ms-flex-line-pack: center;
       align-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 20%;
-          flex: 1 1 20%;
+      -ms-flex: 1 1;
+          flex: 1 1;
 }
 
 @media (max-width: 1024px) {
   .current-day .misc {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
   }
@@ -185,6 +203,14 @@ body {
 
 .current-day .misc * {
   padding: 0 10px;
+}
+
+@media (max-width: 640px) {
+  .current-day .icon {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    max-height: 64px;
+  }
 }
 
 .forecast-day {
@@ -225,7 +251,6 @@ body {
 .icon {
   -o-object-fit: contain;
      object-fit: contain;
-  max-height: 64px;
 }
 
 .sunrise,

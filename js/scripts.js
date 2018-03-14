@@ -1,11 +1,14 @@
 let currentLocation;
 
+// Get geolocation
+document.getElementById('find-me').addEventListener('click', getLocation);
 function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
         document.querySelector('#coordinates').textContent = `
         Latitude ${position.coords.latitude}°,
         Longitude ${position.coords.longitude}`;
         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
+        getForecast(currentLocation);
     });
 }
 
@@ -44,15 +47,12 @@ function getForecast(city = 'stockholm') {
                 document.querySelector(`#day-${counter} .sunset`).textContent = forecastday.astro.sunset;
                 counter++;
             });
+            document.getElementById('city-input').value = json.location.name;
+        }).catch(err => {
+            document.getElementById('city-input').value = 'Try again';
+            console.log('error:', err.message);
         });
 }
-
-function loadWeather() {
-    // Loads location before getting weather
-    getLocation();
-    setTimeout(() => getForecast(), 100);
-}
-
 
 // Search city functionality
 document.getElementById('find-city').addEventListener('submit', addPost);
@@ -63,4 +63,5 @@ function addPost(e) {
 }
 
 // Populate website on load
-loadWeather();
+getForecast();
+getLocation();
