@@ -12,6 +12,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 .site-wrapper {
@@ -21,7 +23,7 @@ body {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 300px 200px auto min-max(350px, 1fr);
+  grid-template-rows: 300px 200px auto auto;
   grid-template-areas:
     "header header"
     "search search"
@@ -71,7 +73,6 @@ body {
   }
   .footer {
     grid-area: footer;
-    margin-top: 200px;
   }
   .footer p {
     color: white;
