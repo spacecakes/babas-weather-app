@@ -6,7 +6,7 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
         document.querySelector('#coordinates').textContent = `
         Latitude ${position.coords.latitude}°,
-        Longitude ${position.coords.longitude}`;
+        Longitude ${position.coords.longitude}°`;
         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
         getForecast(currentLocation);
     });
@@ -30,7 +30,7 @@ function getForecast(city = 'stockholm') {
 
             // Add specific current weather data
             document.querySelector(`#day-${counter} .feels-like`).textContent = `Feels like ${Math.round(json.current.feelslike_c)} °C`;
-            document.querySelector(`#day-${counter} .pressure`).textContent = `Pressure ${Math.round((json.current.pressure_mb) / 1000).toFixed(2)} bar`;
+            document.querySelector(`#day-${counter} .pressure`).textContent = `Pressure ${(json.current.pressure_mb / 1000).toFixed(3)} bar`;
 
             // Add weather data to elements
             json.forecast.forecastday.forEach(forecastday => {
