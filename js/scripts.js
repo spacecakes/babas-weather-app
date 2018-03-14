@@ -15,7 +15,7 @@ function getDay() {
     return weekday[day.getDay()];
 }
 
-function getForecast(city = 'Stockholm') {
+function getForecast(city = currentLocation) {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => response.json()) // Parse response to JSON
         .then(json => {
@@ -47,5 +47,11 @@ function getForecast(city = 'Stockholm') {
         });
 }
 
-getLocation();
-getForecast();
+function loadWeather() {
+    // Loads location before getting weather
+    getLocation();
+    setTimeout(() => getForecast(), 100);
+}
+
+// Populate website on load
+loadWeather();
