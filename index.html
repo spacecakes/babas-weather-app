@@ -12,8 +12,17 @@
 
 <body>
     <section class="forecast-wrapper">
+
         <h1 class="title">Baba's Weather</h1>
         <h2 id="city"></h2>
+
+        <div class="search-box">
+            <form id="find-city">
+                <input type="text" id="city-input" placeholder="Find city...">
+                <input type="submit" value="→">
+            </form>
+        </div>
+
         <div class="forecast-day current" id="day-1">
             <div class="date"></div>
             <img src="" alt="" class="icon">
@@ -115,9 +124,12 @@
                 <p class="sunset"></p>
             </div>
         </div>
+        <footer class="footer">
+            <p>Gabriel Lundmark, 2018</p>
+            <p id="updated"></p>
+            <p id="coordinates"></p>
+        </footer>
     </section>
-    <p id="updated"></p>
-    <p id="coordinates"></p>
 </body>
 
 <script src="js/scripts.js"></script>

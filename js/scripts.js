@@ -15,7 +15,7 @@ function getDay() {
     return weekday[day.getDay()];
 }
 
-function getForecast(city = currentLocation) {
+function getForecast(city = 'stockholm') {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => response.json()) // Parse response to JSON
         .then(json => {
@@ -38,7 +38,7 @@ function getForecast(city = currentLocation) {
                 document.querySelector(`#day-${counter} .conditions`).textContent = forecastday.day.condition.text;
                 document.querySelector(`#day-${counter} .diff-temp`).textContent = `Temps ${Math.round(forecastday.day.mintemp_c)} to ${Math.round(forecastday.day.maxtemp_c)} °C`;
                 document.querySelector(`#day-${counter} .humidity`).textContent = `Humidity ${forecastday.day.avghumidity}%`;
-                document.querySelector(`#day-${counter} .rain`).textContent = `${forecastday.day.totalprecip_mm} mm rain`;
+                document.querySelector(`#day-${counter} .rain`).textContent = `Precipitation ${forecastday.day.totalprecip_mm} mm`;
                 document.querySelector(`#day-${counter} .max-wind`).textContent = `Wind ${(forecastday.day.maxwind_kph / 3.6).toFixed(2)} m/s`;
                 document.querySelector(`#day-${counter} .sunrise`).textContent = forecastday.astro.sunrise;
                 document.querySelector(`#day-${counter} .sunset`).textContent = forecastday.astro.sunset;
@@ -51,6 +51,15 @@ function loadWeather() {
     // Loads location before getting weather
     getLocation();
     setTimeout(() => getForecast(), 100);
+}
+
+
+// Search city functionality
+document.getElementById('find-city').addEventListener('submit', addPost);
+function addPost(e) {
+    e.preventDefault();
+    const city = document.getElementById('city-input').value;
+    getForecast(city);
 }
 
 // Populate website on load
