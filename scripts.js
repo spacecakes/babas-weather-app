@@ -1,4 +1,3 @@
-// Create elements 
 
 function getDay() {
     const day = new Date();
@@ -6,19 +5,34 @@ function getDay() {
     return weekday[day.getDay()];
 }
 
-function getWeather() {
-    fetch('https://api.apixu.com/v1/forecast.json?key=50bab9bae1bd4dca94c93510180603&q=stockholm&days=6')
-        .then(response => response.json())
+function getForecast(city) {
+    fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
+        .then(response => response.json()) // Parse response to JSON
         .then(json => {
+            let counter = 1;
 
-            // Add API data to elements
+            // Add city and timestamp to elements
             document.querySelector('#city').textContent = `Weather forecast for ${json.location.name}, ${json.location.country} on ${getDay()}`;
-            document.querySelector('#conditions').textContent = json.current.condition.text;
-            document.querySelector('#icon').setAttribute('src', `https:${json.current.condition.icon}`);
-            document.querySelector('#temp').textContent = Math.round(json.current.temp_c) + ' °C';
-            document.querySelector('#updated').textContent = `Last updated ${json.current.last_updated}`;
+            document.querySelector('#updated').textContent = `Last updated on ${getDay()} ${json.current.last_updated}`;
+
+            json.forecast.forecastday.forEach(forecastday => {
+                // Add weather data to elements
+                document.querySelector(`#day-${counter} .icon`).setAttribute('src', `https:${forecastday.day.condition.icon}`);
+                document.querySelector(`#day-${counter} .date`).textContent = forecastday.date;
+                document.querySelector(`#day-${counter} .temp`).textContent = Math.round(forecastday.day.avgtemp_c) + ' °C';
+                document.querySelector(`#day-${counter} .min-temp`).textContent = Math.round(forecastday.day.mintemp_c) + ' °C';
+                document.querySelector(`#day-${counter} .max-temp`).textContent = Math.round(forecastday.day.maxtemp_c) + ' °C';
+                document.querySelector(`#day-${counter} .conditions`).textContent = forecastday.day.condition.text;
+                document.querySelector(`#day-${counter} .humidity`).textContent = forecastday.day.avghumidity + '%';
+                document.querySelector(`#day-${counter} .rain`).textContent = forecastday.day.totalprecip_mm + ' mm';
+                document.querySelector(`#day-${counter} .max-wind`).textContent = (forecastday.day.maxwind_kph / 3.6).toFixed(2) + ' m/s';
+                document.querySelector(`#day-${counter} .sunrise`).textContent = forecastday.astro.sunrise;
+                document.querySelector(`#day-${counter} .sunset`).textContent = forecastday.astro.sunset;
+                counter++;
+            });
         });
 }
 
 
-getWeather();
+getForecast('stockholm');
+
