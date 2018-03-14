@@ -1,0 +1,106 @@
+.title {
+  grid-area: title;
+  font-family: "Lobster", cursive;
+  font-size: 5em;
+}
+
+#city {
+  grid-area: city;
+  font-family: "Lobster", cursive;
+  font-size: 1.5em;
+  color: white;
+}
+
+.search-box {
+  grid-area: search;
+}
+
+.search-box input {
+  margin: 20px 0;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  font-size: 2em;
+}
+
+.search-box input:last-of-type {
+  padding: 0 20px;
+  border-radius: 0 25px 25px 0;
+}
+
+.search-box input:hover {
+  background-color: rgba(79, 202, 126, 0.7);
+  color: #353347;
+}
+
+/*
+.forecast-wrapper {
+  display: grid;
+  .forecast-day {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    * {
+      padding: 5px;
+    }
+    .icon {
+      object-fit: contain;
+      max-height: 64px;
+    }
+    .date {
+      font-size: 0.6em;
+    }
+    .conditions {
+      font-size: 1.5em;
+      flex: 1;
+    }
+    .temp {
+      font-size: 2em;
+    }
+    .misc {
+      font-size: 0.8em;
+      padding: 0;
+    }
+    .sunrise,
+    .sunset {
+      display: none;
+    }
+    &.current {
+      padding: 0px;
+      flex-flow: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      .temp,
+      .conditions {
+        font-size: 4em;
+        @include breakpoint(tablet) {
+          font-size: 3em;
+        }
+        @include breakpoint(smartphone-big) {
+          font-size: 2.5em;
+        }
+      }
+      .conditions {
+        flex: 1 1 40%;
+        text-align: left;
+      }
+      .misc {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+      }
+      .misc p {
+        font-size: 1.2em;
+      }
+      .date,
+      .sunset,
+      .sunrise {
+        display: none;
+      }
+    }
+  }
+}
+*/

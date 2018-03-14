@@ -11,23 +11,25 @@
 </head>
 
 <body>
-    <section class="forecast-wrapper">
+    <div class="site-wrapper">
 
-        <h1 class="title">Baba's Weather</h1>
-        <h2 id="city"></h2>
+        <header class="header">
+            <h1 class="title">Baba's Weather</h1>
+            <h2 id="city"></h2>
+        </header>
 
         <div class="search-box">
             <form id="find-city">
                 <input type="text" id="city-input" placeholder="Find city...">
+                <input type="button" value="here">
                 <input type="submit" value="→">
             </form>
         </div>
 
-        <div class="forecast-day current" id="day-1">
+        <div class="current-day" id="day-1">
             <div class="date"></div>
             <img src="" alt="" class="icon">
             <div class="temp"></div>
-
             <div class="conditions"></div>
             <div class="misc">
                 <p class="feels-like"></p>
@@ -40,96 +42,100 @@
                 <p class="sunset"></p>
             </div>
         </div>
-        <div class="forecast-day" id="day-2">
-            <div class="date"></div>
-            <img src="" alt="" class="icon">
-            <div class="temp"></div>
-            <div class="conditions"></div>
-            <div class="misc">
-                <p class="diff-temp"></p>
-                <p class="humidity"></p>
-                <p class="rain"></p>
-                <p class="max-wind"></p>
-                <p class="sunrise"></p>
-                <p class="sunset"></p>
+        <div class="forecast-wrapper">
+
+            <div class="forecast-day" id="day-2">
+                <div class="date"></div>
+                <img src="" alt="" class="icon">
+                <div class="temp"></div>
+                <div class="conditions"></div>
+                <div class="misc">
+                    <p class="diff-temp"></p>
+                    <p class="humidity"></p>
+                    <p class="rain"></p>
+                    <p class="max-wind"></p>
+                    <p class="sunrise"></p>
+                    <p class="sunset"></p>
+                </div>
+            </div>
+            <div class="forecast-day" id="day-3">
+                <div class="date"></div>
+                <img src="" alt="" class="icon">
+                <div class="temp"></div>
+                <div class="conditions"></div>
+                <div class="misc">
+                    <p class="diff-temp"></p>
+                    <p class="humidity"></p>
+                    <p class="rain"></p>
+                    <p class="max-wind"></p>
+                    <p class="sunrise"></p>
+                    <p class="sunset"></p>
+                </div>
+            </div>
+            <div class="forecast-day" id="day-4">
+                <div class="date"></div>
+                <img src="" alt="" class="icon">
+                <div class="temp"></div>
+                <div class="conditions"></div>
+                <div class="misc">
+                    <p class="diff-temp"></p>
+                    <p class="humidity"></p>
+                    <p class="rain"></p>
+                    <p class="max-wind"></p>
+                    <p class="sunrise"></p>
+                    <p class="sunset"></p>
+                </div>
+            </div>
+            <div class="forecast-day" id="day-5">
+                <div class="date"></div>
+                <img src="" alt="" class="icon">
+                <div class="temp"></div>
+                <div class="conditions"></div>
+                <div class="misc">
+                    <p class="diff-temp"></p>
+                    <p class="humidity"></p>
+                    <p class="rain"></p>
+                    <p class="max-wind"></p>
+                    <p class="sunrise"></p>
+                    <p class="sunset"></p>
+                </div>
+            </div>
+            <div class="forecast-day" id="day-6">
+                <div class="date"></div>
+                <img src="" alt="" class="icon">
+                <div class="temp"></div>
+                <div class="conditions"></div>
+                <div class="misc">
+                    <p class="diff-temp"></p>
+                    <p class="humidity"></p>
+                    <p class="rain"></p>
+                    <p class="max-wind"></p>
+                    <p class="sunrise"></p>
+                    <p class="sunset"></p>
+                </div>
+            </div>
+            <div class="forecast-day" id="day-7">
+                <div class="date"></div>
+                <img src="" alt="" class="icon">
+                <div class="temp"></div>
+                <div class="conditions"></div>
+                <div class="misc">
+                    <p class="diff-temp"></p>
+                    <p class="humidity"></p>
+                    <p class="rain"></p>
+                    <p class="max-wind"></p>
+                    <p class="sunrise"></p>
+                    <p class="sunset"></p>
+                </div>
             </div>
         </div>
-        <div class="forecast-day" id="day-3">
-            <div class="date"></div>
-            <img src="" alt="" class="icon">
-            <div class="temp"></div>
-            <div class="conditions"></div>
-            <div class="misc">
-                <p class="diff-temp"></p>
-                <p class="humidity"></p>
-                <p class="rain"></p>
-                <p class="max-wind"></p>
-                <p class="sunrise"></p>
-                <p class="sunset"></p>
-            </div>
-        </div>
-        <div class="forecast-day" id="day-4">
-            <div class="date"></div>
-            <img src="" alt="" class="icon">
-            <div class="temp"></div>
-            <div class="conditions"></div>
-            <div class="misc">
-                <p class="diff-temp"></p>
-                <p class="humidity"></p>
-                <p class="rain"></p>
-                <p class="max-wind"></p>
-                <p class="sunrise"></p>
-                <p class="sunset"></p>
-            </div>
-        </div>
-        <div class="forecast-day" id="day-5">
-            <div class="date"></div>
-            <img src="" alt="" class="icon">
-            <div class="temp"></div>
-            <div class="conditions"></div>
-            <div class="misc">
-                <p class="diff-temp"></p>
-                <p class="humidity"></p>
-                <p class="rain"></p>
-                <p class="max-wind"></p>
-                <p class="sunrise"></p>
-                <p class="sunset"></p>
-            </div>
-        </div>
-        <div class="forecast-day" id="day-6">
-            <div class="date"></div>
-            <img src="" alt="" class="icon">
-            <div class="temp"></div>
-            <div class="conditions"></div>
-            <div class="misc">
-                <p class="diff-temp"></p>
-                <p class="humidity"></p>
-                <p class="rain"></p>
-                <p class="max-wind"></p>
-                <p class="sunrise"></p>
-                <p class="sunset"></p>
-            </div>
-        </div>
-        <div class="forecast-day" id="day-7">
-            <div class="date"></div>
-            <img src="" alt="" class="icon">
-            <div class="temp"></div>
-            <div class="conditions"></div>
-            <div class="misc">
-                <p class="diff-temp"></p>
-                <p class="humidity"></p>
-                <p class="rain"></p>
-                <p class="max-wind"></p>
-                <p class="sunrise"></p>
-                <p class="sunset"></p>
-            </div>
-        </div>
+
         <footer class="footer">
             <p>Gabriel Lundmark, 2018</p>
             <p id="updated"></p>
             <p id="coordinates"></p>
         </footer>
-    </section>
+    </div>
 </body>
 
 <script src="js/scripts.js"></script>
