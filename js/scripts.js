@@ -35,7 +35,7 @@ function getForecast(city = 'stockholm') {
             document.querySelector(`#day-${counter} .feels-like`)
                 .textContent = `Feels like ${Math.round(json.current.feelslike_c)} °C`;
             document.querySelector(`#day-${counter} .pressure`)
-                .textContent = `Pressure ${(json.current.pressure_mb / 1000).toFixed(3)} bar`;
+                .textContent = `Pres. ${(json.current.pressure_mb / 1000).toFixed(3)} bar`;
 
             // Add weather data to elements
             json.forecast.forecastday.forEach(forecastday => {
