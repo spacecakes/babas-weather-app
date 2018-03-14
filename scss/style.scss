@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "Saira Condensed", sans-serif;
+}
+body {
+  background-image: url("https://images.unsplash.com/photo-1432071315934-33a387ee0437?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d70f20b108c95f729648d41a30a9fcf&auto=format&fit=crop&w=3300&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.forecast-wrapper {
+  max-width: 1000px;
+  margin: 100px auto;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  .title {
+    grid-area: 1/1/ 1/-1;
+    font-family: "Lobster", cursive;
+    font-size: 5em;
+  }
+  #city {
+    font-size: 1.5em;
+    grid-area: 2/1/ 2/-1;
+  }
+  #updated {
+    grid-column: 1/-1;
+    font-size: 0.6em;
+  }
+  #updated,
+  .title,
+  #city {
+    color: white;
+  }
+}
+
+.forecast-day {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  * {
+    padding: 10px;
+  }
+  .icon {
+    object-fit: contain;
+    max-height: 64px;
+  }
+  .date {
+    font-size: 0.6em;
+  }
+  .conditions {
+    font-size: 1.5em;
+    flex: 1;
+  }
+  .temp {
+    font-size: 2em;
+  }
+  .misc {
+    font-size: 0.8em;
+    padding: 0;
+  }
+  .sunrise,
+  .sunset {
+    display: none;
+  }
+  &.current {
+    padding: 0px;
+    grid-row: 3;
+    grid-column: 1/-1;
+    flex-flow: row;
+    align-items: center;
+    .temp,
+    .conditions {
+      font-size: 3em;
+    }
+    .conditions {
+      flex: 1;
+    }
+    .misc {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .misc p {
+      flex: 0 40%;
+    }
+    .date,
+    .sunset,
+    .sunrise {
+      display: none;
+    }
+  }
+}
