@@ -10,6 +10,12 @@ body {
   background-image: url("https://images.unsplash.com/photo-1432071315934-33a387ee0437?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d70f20b108c95f729648d41a30a9fcf&auto=format&fit=crop&w=3300&q=80");
   background-size: cover;
   background-repeat: no-repeat;
+  #coordinates,
+  #updated {
+    font-size: 0.8em;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+  }
 }
 
 .forecast-wrapper {
@@ -35,7 +41,6 @@ body {
     grid-column: 1/-1;
     font-size: 0.6em;
   }
-  #updated,
   .title,
   #city {
     color: white;

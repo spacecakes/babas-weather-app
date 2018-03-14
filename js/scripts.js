@@ -1,3 +1,13 @@
+let currentLocation;
+
+function getLocation() {
+    navigator.geolocation.getCurrentPosition((position) => {
+        document.querySelector('#coordinates').textContent = `
+        Latitude ${position.coords.latitude}°,
+        Longitude ${position.coords.longitude}`;
+        currentLocation = position.coords.latitude + ',' + position.coords.longitude;
+    });
+}
 
 function getDay() {
     const day = new Date();
@@ -5,7 +15,7 @@ function getDay() {
     return weekday[day.getDay()];
 }
 
-function getForecast(city) {
+function getForecast(city = 'Stockholm') {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => response.json()) // Parse response to JSON
         .then(json => {
@@ -37,6 +47,5 @@ function getForecast(city) {
         });
 }
 
-
-getForecast('stockholm');
-
+getLocation();
+getForecast();
