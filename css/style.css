@@ -317,7 +317,7 @@ body {
 
 @media (max-width: 640px) {
   .title {
-    font-size: 48px;
+    font-size: 32px;
   }
 }
 
@@ -402,7 +402,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 48px;
+  font-size: 32px;
 }
 
 .current-day .date {
@@ -452,15 +452,15 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1;
-          flex: 1 1;
+      -ms-flex: 1 1 20%;
+          flex: 1 1 20%;
 }
 
 @media (max-width: 1024px) {
   .current-day .misc {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
   }
@@ -502,7 +502,7 @@ body {
 }
 
 .forecast-day .temp {
-  font-size: 48px;
+  font-size: 32px;
 }
 
 .forecast-day .misc {

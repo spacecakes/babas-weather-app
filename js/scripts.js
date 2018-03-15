@@ -13,10 +13,10 @@ function getLocation() {
     });
 }
 
-function getDay() {
+function getDay(offset = 0) {
     const day = new Date();
     const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    return weekday[day.getDay()];
+    return weekday[(day.getDay() + offset) % 7];
 }
 
 function getForecast(city = 'stockholm') {
