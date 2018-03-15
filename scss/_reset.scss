@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  box-sizing: border-box;
 }
 
 input {
@@ -9,13 +10,15 @@ input {
   margin: 0;
   padding: 0;
   background-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
+
 input::-webkit-input-placeholder {
   color: gray;
 }
-.search-box {
-  -webkit-appearance: none;
-}
+
 form {
   width: 100%;
   height: 100%;
