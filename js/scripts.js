@@ -62,7 +62,8 @@ function getForecast(city = 'stockholm') {
                 counter++;
             });
             // Add location to search field
-            document.getElementById('city-input').value = json.location.name;
+            document.getElementById('city-input').placeholder = json.location.name;
+            document.getElementById('city-input').value = '';
         }).catch(err => {
             // Handle errors
             document.getElementById('city-input').placeholder = 'Spell properly';

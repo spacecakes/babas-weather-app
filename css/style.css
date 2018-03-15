@@ -30,6 +30,7 @@ body {
   grid-area: header;
   -ms-flex-item-align: end;
       align-self: flex-end;
+  margin: 0 20px;
 }
 
 .site-wrapper .title {
@@ -63,6 +64,7 @@ body {
           flex: 1;
   background-color: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(5px);
+  -webkit-appearance: none;
 }
 
 .site-wrapper .search-box input:first-of-type {
@@ -129,7 +131,7 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 320px) {
   .forecast-wrapper {
     grid-template: repeat(6, 1fr)/1fr;
   }
