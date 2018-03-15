@@ -1,9 +1,10 @@
 @import "reset";
 @import "mixins";
+@import "variables";
 @import "animations";
 
 body {
-  color: rgb(34, 34, 44);
+  color: $fc-main;
   font-family: "Saira Condensed", sans-serif;
   background-image: url("https://images.unsplash.com/photo-1432071315934-33a387ee0437?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d70f20b108c95f729648d41a30a9fcf&auto=format&fit=crop&w=3300&q=80");
   background-size: cover;
@@ -13,85 +14,100 @@ body {
 
 .site-wrapper {
   max-width: 1000px;
-  min-width: 320px;
+  min-width: 300px;
   min-height: 100vh;
   margin: auto;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: 300px 200px max-content max-content;
   grid-template-areas:
-    "header header"
-    "search search"
-    "current current"
-    "forecast forecast"
-    "footer footer";
-  .header {
-    grid-area: header;
-    align-self: flex-end;
-    margin: 0 20px;
-    animation: 0.5s ease-out 0s 1 slideInFromTop;
+    "header"
+    "search"
+    "current"
+    "forecast"
+    "footer";
+  @include breakpoint(smartphone-big) {
+    grid-template-rows: 100px auto max-content max-content;
+    grid-template-areas:
+      "search"
+      "header"
+      "current"
+      "forecast"
+      "footer";
   }
-  .title {
-    font-family: "Lobster", cursive;
-    font-size: 5.5em;
+}
+
+.header {
+  grid-area: header;
+  align-self: flex-end;
+  margin: 0 20px;
+  animation: 0.5s ease-out 0s 1 slideInFromTop;
+}
+.title {
+  font-family: "Lobster", cursive;
+  font-size: $fz-massive;
+  @include breakpoint(smartphone-big) {
+    font-size: $fz-huge;
   }
-  #city {
-    grid-area: city;
-    font-family: "Lobster", cursive;
-    font-size: 1.5em;
-    color: white;
+}
+#city {
+  grid-area: city;
+  font-family: "Lobster", cursive;
+  font-size: $fz-big;
+  color: white;
+  @include breakpoint(smartphone-big) {
+    font-size: $fz-normal;
   }
-  .search-box {
-    animation: 0.5s pulse;
-    grid-area: search;
-    display: flex;
-    margin: auto;
-    &:hover {
-      transform: scale(1.2);
-      transition: all 0.3s ease;
-    }
-    input {
-      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-      font-size: 2em;
-      border: none;
-      padding: 10px;
-      flex: 1;
-      background-color: rgba(255, 255, 255, 0.5);
-      -webkit-backdrop-filter: blur(5px);
-      -webkit-appearance: none;
-    }
-    input:first-of-type {
-      border-radius: 25px 0 0 25px;
-      @include breakpoint(smartphone-small) {
-        width: 150px;
-      }
-    }
-    input:last-of-type {
-      border-radius: 0 25px 25px 0;
-    }
-    input::-webkit-input-placeholder {
-      color: gray;
-    }
-    input:hover {
-      background-color: rgba(79, 202, 126, 0.7);
-      color: rgb(53, 51, 71);
-    }
+}
+
+.search-box {
+  animation: 0.5s pulse;
+  grid-area: search;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  &:hover {
+    transform: scale(1.2);
+    transition: all 0.3s ease;
   }
-  .footer {
-    grid-area: footer;
+  input {
+    box-shadow: $bs-main;
+    font-size: $fz-big;
+    border: none;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(5px);
+    -webkit-appearance: none;
   }
-  .footer span {
-    color: white;
-    font-size: 0.6em;
+  input:first-of-type {
+    border-radius: 25px 0 0 25px;
   }
+  input:last-of-type {
+    border-radius: 0 25px 25px 0;
+  }
+  input::-webkit-input-placeholder {
+    color: gray;
+  }
+  input:hover {
+    background-color: $c-hover;
+  }
+}
+
+.footer {
+  grid-area: footer;
+}
+.footer span {
+  color: white;
+  font-size: $fz-tiny;
 }
 
 .current-day,
 .forecast-wrapper {
   animation: 1s ease fadeIn;
 
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: $bs-main;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 5px;
   padding: 10px;
@@ -123,18 +139,15 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-around;
+  align-items: center;
+  font-size: $fz-huge;
   .date {
     display: none;
   }
-  .temp {
-    font-size: 6em;
-    align-self: center;
-  }
   .conditions {
-    font-size: 3em;
     align-self: center;
     @include breakpoint(smartphone-big) {
-      font-size: 2em;
+      font-size: $fz-big;
     }
     @include breakpoint(smartphone-big) {
       flex: 1 1;
@@ -146,8 +159,8 @@ body {
   .conditions {
     flex: 1 1 50%;
   }
-
   .misc {
+    font-size: $fz-normal;
     display: flex;
     align-content: center;
     flex-wrap: wrap;
@@ -174,24 +187,19 @@ body {
   display: flex;
   flex-direction: column;
   align-content: space-between;
-  .date {
-    font-size: 0.6em;
-  }
   .conditions {
-    font-size: 1.5em;
+    font-size: $fz-big;
     flex: 1;
   }
   .temp {
-    font-size: 2em;
+    font-size: $fz-huge;
   }
   .misc {
-    font-size: 0.8em;
+    font-size: $fz-small;
   }
 }
-
 .icon {
   object-fit: contain;
-  align-self: center;
 }
 .sunrise,
 .sunset {

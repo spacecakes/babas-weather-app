@@ -1,0 +1,16 @@
+// Font sizes
+$fz-root: 16px;
+
+$fz-tiny: $fz-root / 1.5;
+$fz-small: $fz-root / 1.2;
+$fz-normal: $fz-root;
+$fz-big: $fz-root * 1.5;
+$fz-huge: $fz-root * 3;
+$fz-massive: $fz-root * 5;
+
+// Colors
+$fc-main: rgb(34, 34, 44);
+$c-hover: rgba(79, 202, 126, 0.7);
+
+// Shadows
+$bs-main: 5px 5px 5px rgba(0, 0, 0, 0.2);

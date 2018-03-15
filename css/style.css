@@ -197,18 +197,26 @@ body {
 
 .site-wrapper {
   max-width: 1000px;
-  min-width: 320px;
+  min-width: 300px;
   min-height: 100vh;
   margin: auto;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: 300px 200px -webkit-max-content max-content;
   grid-template-rows: 300px 200px max-content max-content;
-  grid-template-areas: "header header" "search search" "current current" "forecast forecast" "footer footer";
+  grid-template-areas: "header" "search" "current" "forecast" "footer";
 }
 
-.site-wrapper .header {
+@media (max-width: 640px) {
+  .site-wrapper {
+    grid-template-rows: 100px auto -webkit-max-content max-content;
+    grid-template-rows: 100px auto max-content max-content;
+    grid-template-areas: "search" "header" "current" "forecast" "footer";
+  }
+}
+
+.header {
   grid-area: header;
   -ms-flex-item-align: end;
       align-self: flex-end;
@@ -217,29 +225,47 @@ body {
           animation: 0.5s ease-out 0s 1 slideInFromTop;
 }
 
-.site-wrapper .title {
+.title {
   font-family: "Lobster", cursive;
-  font-size: 5.5em;
+  font-size: 80px;
 }
 
-.site-wrapper #city {
+@media (max-width: 640px) {
+  .title {
+    font-size: 48px;
+  }
+}
+
+#city {
   grid-area: city;
   font-family: "Lobster", cursive;
-  font-size: 1.5em;
+  font-size: 24px;
   color: white;
 }
 
-.site-wrapper .search-box {
+@media (max-width: 640px) {
+  #city {
+    font-size: 16px;
+  }
+}
+
+.search-box {
   -webkit-animation: 0.5s pulse;
           animation: 0.5s pulse;
   grid-area: search;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: auto;
 }
 
-.site-wrapper .search-box:hover {
+.search-box:hover {
   -webkit-transform: scale(1.2);
       -ms-transform: scale(1.2);
           transform: scale(1.2);
@@ -248,50 +274,40 @@ body {
   transition: all 0.3s ease;
 }
 
-.site-wrapper .search-box input {
+.search-box input {
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
           box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-  font-size: 2em;
+  font-size: 24px;
   border: none;
   padding: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   background-color: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(5px);
   -webkit-appearance: none;
 }
 
-.site-wrapper .search-box input:first-of-type {
+.search-box input:first-of-type {
   border-radius: 25px 0 0 25px;
 }
 
-@media (max-width: 480px) {
-  .site-wrapper .search-box input:first-of-type {
-    width: 150px;
-  }
-}
-
-.site-wrapper .search-box input:last-of-type {
+.search-box input:last-of-type {
   border-radius: 0 25px 25px 0;
 }
 
-.site-wrapper .search-box input::-webkit-input-placeholder {
+.search-box input::-webkit-input-placeholder {
   color: gray;
 }
 
-.site-wrapper .search-box input:hover {
+.search-box input:hover {
   background-color: rgba(79, 202, 126, 0.7);
-  color: #353347;
 }
 
-.site-wrapper .footer {
+.footer {
   grid-area: footer;
 }
 
-.site-wrapper .footer span {
+.footer span {
   color: white;
-  font-size: 0.6em;
+  font-size: 10.66667px;
 }
 
 .current-day,
@@ -350,27 +366,24 @@ body {
           justify-content: center;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 48px;
 }
 
 .current-day .date {
   display: none;
 }
 
-.current-day .temp {
-  font-size: 6em;
-  -ms-flex-item-align: center;
-      align-self: center;
-}
-
 .current-day .conditions {
-  font-size: 3em;
   -ms-flex-item-align: center;
       align-self: center;
 }
 
 @media (max-width: 640px) {
   .current-day .conditions {
-    font-size: 2em;
+    font-size: 24px;
   }
 }
 
@@ -397,6 +410,7 @@ body {
 }
 
 .current-day .misc {
+  font-size: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -447,30 +461,24 @@ body {
       align-content: space-between;
 }
 
-.forecast-day .date {
-  font-size: 0.6em;
-}
-
 .forecast-day .conditions {
-  font-size: 1.5em;
+  font-size: 24px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
 .forecast-day .temp {
-  font-size: 2em;
+  font-size: 48px;
 }
 
 .forecast-day .misc {
-  font-size: 0.8em;
+  font-size: 13.33333px;
 }
 
 .icon {
   -o-object-fit: contain;
      object-fit: contain;
-  -ms-flex-item-align: center;
-      align-self: center;
 }
 
 .sunrise,
