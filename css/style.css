@@ -4,6 +4,26 @@
   text-align: center;
 }
 
+input {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+input::-webkit-input-placeholder {
+  color: gray;
+}
+
+.search-box {
+  -webkit-appearance: none;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
 @-webkit-keyframes slideInFromTop {
   0% {
     -webkit-transform: translateY(-200%);
@@ -250,19 +270,23 @@ body {
 }
 
 .search-box {
+  grid-area: search;
+  max-width: 400px;
+  height: 50px;
   -webkit-animation: 0.5s pulse;
           animation: 0.5s pulse;
-  grid-area: search;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   margin: auto;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .search-box:hover {
@@ -274,30 +298,30 @@ body {
   transition: all 0.3s ease;
 }
 
-.search-box input {
-  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+.search-box .button {
   font-size: 24px;
-  border: none;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-  -webkit-backdrop-filter: blur(5px);
-  -webkit-appearance: none;
 }
 
-.search-box input:first-of-type {
+.search-box .button.search {
+  padding: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
   border-radius: 25px 0 0 25px;
 }
 
-.search-box input:last-of-type {
+.search-box .button.submit {
   border-radius: 0 25px 25px 0;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
 }
 
-.search-box input::-webkit-input-placeholder {
-  color: gray;
+.search-box .button.location {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
 }
 
-.search-box input:hover {
+.search-box .button:hover {
   background-color: rgba(79, 202, 126, 0.7);
 }
 
