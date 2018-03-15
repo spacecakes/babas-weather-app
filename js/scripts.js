@@ -1,4 +1,5 @@
 let currentLocation;
+let forecast = {};
 
 // Get geolocation
 document.getElementById('find-me').addEventListener('click', getLocation);
@@ -22,7 +23,7 @@ function getDay(offset = 0) {
 function getForecast(city = 'stockholm') {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => response.json()) // Parse response to JSON
-        .then(json => renderPage(json)).catch(err => renderErrors(err));
+        .then(json => renderForecast(json)).catch(err => renderErrors(err));
 }
 
 function renderErrors(err) {
@@ -34,8 +35,7 @@ function renderErrors(err) {
     }
 }
 
-function renderPage(data) {
-
+function renderForecast(data) {
     // Add city and timestamp to elements
     document.querySelector('#city')
         .textContent = `Weather forecast for ${data.location.name}, ${data.location.country} on ${getDay()}`;
@@ -77,19 +77,15 @@ function renderPage(data) {
     // Add location to search field
     document.getElementById('city-input').placeholder = data.location.name;
     document.getElementById('city-input').value = '';
-
-
 }
 
-
 // Search city functionality
-document.getElementById('find-city').addEventListener('submit', addPost);
-function addPost(e) {
+document.getElementById('find-city').addEventListener('submit', searchCity);
+function searchCity(e) {
     e.preventDefault();
     const city = document.getElementById('city-input').value;
     getForecast(city);
 }
 
-// Populate website on load
-getForecast();
+// Get location on load
 getLocation();
