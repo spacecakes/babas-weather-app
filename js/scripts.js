@@ -54,7 +54,7 @@ function renderForecast(data) {
         counter++;
         document.querySelector(`#day-${counter} .icon`)
             .setAttribute('src', `https:${forecastday.day.condition.icon}`);
-        document.querySelector(`#day-${counter} .date`)
+        document.querySelector(`#day-${counter} .day`)
             .textContent = getDay(counter);
         document.querySelector(`#day-${counter} .temp`)
             .textContent = Math.round(forecastday.day.avgtemp_c) + ' °C';
@@ -87,5 +87,6 @@ function searchCity(e) {
     getForecast(city);
 }
 
-// Get location on load
+// Get data on load
 getLocation();
+getForecast();

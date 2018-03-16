@@ -6,7 +6,7 @@
 
 body {
   color: $fc-main;
-  font-family: "Saira Condensed", sans-serif;
+  font-family: $ff-main;
   background-image: url("https://images.unsplash.com/photo-1432071315934-33a387ee0437?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d70f20b108c95f729648d41a30a9fcf&auto=format&fit=crop&w=3300&q=80");
   background-size: cover;
   background-position: center;
@@ -47,7 +47,7 @@ body {
   animation: 0.5s ease-out 0s 1 slideInFromTop;
 }
 .title {
-  font-family: "Lobster", cursive;
+  font-family: $ff-headline;
   font-size: $fz-massive;
   @include breakpoint(smartphone-big) {
     font-size: $fz-huge;
@@ -55,7 +55,7 @@ body {
 }
 #city {
   grid-area: city;
-  font-family: "Lobster", cursive;
+  font-family: $ff-headline;
   font-size: $fz-big;
   color: white;
   @include breakpoint(smartphone-big) {
@@ -101,6 +101,28 @@ body {
   }
 }
 
+.current-day,
+.forecast-day {
+  .icon {
+    object-fit: contain;
+  }
+  .sunrise,
+  .sunset {
+    display: none;
+  }
+  .day {
+    font-family: $ff-headline;
+    margin: 10px;
+  }
+  .misc {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .misc * {
+    padding: 0 10px;
+  }
+}
+
 .current-day {
   grid-area: current;
   display: flex;
@@ -109,7 +131,7 @@ body {
   align-content: space-around;
   align-items: center;
   font-size: $fz-huge;
-  .date {
+  .day {
     display: none;
   }
   .conditions {
@@ -129,9 +151,6 @@ body {
   }
   .misc {
     font-size: $fz-normal;
-    display: flex;
-    align-content: center;
-    flex-wrap: wrap;
     flex: 1 1 20%;
     @include breakpoint(tablet) {
       justify-content: space-between;
@@ -139,8 +158,17 @@ body {
     }
   }
   .misc * {
+    flex: 1 1 50%;
     text-align: left;
-    padding: 0 10px;
+    @include breakpoint(tablet) {
+      flex-basis: 10%;
+    }
+    @include breakpoint(smartphone-big) {
+      flex-basis: 30%;
+    }
+    @include breakpoint(smartphone-small) {
+      flex-basis: 50%;
+    }
   }
   .icon {
     @include breakpoint(smartphone-big) {
@@ -151,25 +179,40 @@ body {
 }
 
 .forecast-day {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  align-content: space-between;
+  justify-content: center;
+  // align-content: flex-start;
   .conditions {
     font-size: $fz-big;
     flex: 1;
   }
   .temp {
     font-size: $fz-huge;
+    align-self: center;
   }
   .misc {
     font-size: $fz-small;
+    flex-direction: column;
+    flex-basis: 100%;
   }
-}
-.icon {
-  object-fit: contain;
-}
-.sunrise,
-.sunset {
-  display: none;
+  @include breakpoint(tablet) {
+    flex-flow: wrap;
+    .day,
+    .misc,
+    .conditions {
+      flex: 1 1 100%;
+    }
+    .misc {
+      flex-direction: row;
+    }
+    .misc * {
+      flex: 0 1 50%;
+    }
+    @include breakpoint(smartphone-small) {
+      .misc * {
+        flex-basis: 100%;
+      }
+    }
+  }
 }
