@@ -1,0 +1,151 @@
+.current-day,
+.forecast-wrapper {
+  animation: 1s ease fadeIn;
+  box-shadow: $bs-main;
+  background-color: $bc-main;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 20px;
+  @supports (-webkit-backdrop-filter: blur()) {
+    -webkit-backdrop-filter: blur(5px);
+  }
+  @include breakpoint(dumbphone) {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.forecast-wrapper {
+  grid-area: forecast;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  @include breakpoint(tablet) {
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+  }
+  @include breakpoint(smartphone-big) {
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+  }
+  @include breakpoint(dumbphone) {
+    grid-template: repeat(6, 1fr) / 1fr;
+  }
+}
+
+.current-day,
+.forecast-day {
+  .icon {
+    object-fit: contain;
+  }
+  .sunrise,
+  .sunset {
+    display: none;
+  }
+  .day {
+    font-family: $ff-headline;
+    margin: 10px;
+  }
+  .misc {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .misc * {
+    padding: 0 10px;
+  }
+}
+
+.current-day {
+  grid-area: current;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
+  font-size: $fz-huge;
+  .day {
+    display: none;
+  }
+  .conditions {
+    align-self: center;
+    flex: 1 1 50%;
+  }
+  .misc {
+    font-size: $fz-normal;
+    flex: 1 1 20%;
+  }
+  .misc * {
+    flex: 1 1 50%;
+    text-align: left;
+  }
+  @include breakpoint(tablet) {
+    .misc {
+      justify-content: space-between;
+      flex-basis: 100%;
+    }
+    .misc * {
+      flex-basis: 10%;
+    }
+  }
+  @include breakpoint(smartphone-big) {
+    .conditions {
+      font-size: $fz-big;
+    }
+    .icon {
+      flex: 1 1 50%;
+      max-height: 64px;
+    }
+    .temp {
+      flex: 1 1 50%;
+    }
+    .misc * {
+      flex-basis: 30%;
+    }
+    @include breakpoint(smartphone-small) {
+      .misc * {
+        flex-basis: 50%;
+      }
+    }
+  }
+}
+
+.forecast-day {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .conditions {
+    font-size: $fz-big;
+    flex: 1;
+  }
+  .temp {
+    font-size: $fz-huge;
+    align-self: center;
+  }
+  .misc {
+    font-size: $fz-small;
+    flex-direction: column;
+    flex-basis: 100%;
+  }
+  @include breakpoint(tablet) {
+    flex-flow: wrap;
+    .day,
+    .misc,
+    .conditions {
+      flex: 1 1 100%;
+    }
+    .misc {
+      flex-direction: row;
+    }
+    .misc * {
+      flex: 1 1 50%;
+    }
+  }
+  @include breakpoint(smartphone-small) {
+    .misc * {
+      flex-basis: 100%;
+    }
+  }
+  @include breakpoint(dumbphone) {
+    .misc * {
+      flex-basis: 50%;
+    }
+  }
+}

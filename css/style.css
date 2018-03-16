@@ -283,98 +283,6 @@ form {
   }
 }
 
-body {
-  color: #22222c;
-  font-family: "Saira Condensed", sans-serif;
-  background-image: url("https://images.unsplash.com/photo-1432071315934-33a387ee0437?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d70f20b108c95f729648d41a30a9fcf&auto=format&fit=crop&w=3300&q=80");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-.site-wrapper {
-  max-width: 1000px;
-  min-width: 300px;
-  min-height: 100vh;
-  margin: auto;
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 300px 200px -webkit-max-content max-content;
-  grid-template-rows: 300px 200px max-content max-content;
-  grid-template-areas: "header" "search" "current" "forecast" "footer";
-}
-
-@media (max-width: 640px) {
-  .site-wrapper {
-    grid-template-rows: 100px auto -webkit-max-content max-content;
-    grid-template-rows: 100px auto max-content max-content;
-    grid-template-areas: "search" "header" "current" "forecast" "footer";
-  }
-}
-
-@media (max-width: 320px) {
-  .site-wrapper {
-    grid-template-rows: auto;
-    grid-gap: 0;
-  }
-}
-
-.header {
-  grid-area: header;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  margin: 0 20px;
-  -webkit-animation: 0.5s ease-out 0s 1 slideInFromTop;
-          animation: 0.5s ease-out 0s 1 slideInFromTop;
-}
-
-@media (max-width: 320px) {
-  .header {
-    margin: 70px 0 20px 0;
-  }
-}
-
-.title {
-  font-family: "Lobster", cursive;
-  font-size: 80px;
-}
-
-@media (max-width: 640px) {
-  .title {
-    font-size: 32px;
-  }
-}
-
-#city {
-  grid-area: city;
-  font-family: "Lobster", cursive;
-  font-size: 24px;
-  color: white;
-}
-
-@media (max-width: 640px) {
-  #city {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 320px) {
-  #city {
-    font-size: 13.33333px;
-  }
-}
-
-.footer {
-  grid-area: footer;
-}
-
-.footer span {
-  color: white;
-  font-size: 10.66667px;
-}
-
 .current-day,
 .forecast-wrapper {
   -webkit-animation: 1s ease fadeIn;
@@ -620,4 +528,96 @@ body {
     -ms-flex-preferred-size: 50%;
         flex-basis: 50%;
   }
+}
+
+body {
+  color: #22222c;
+  font-family: "Saira Condensed", sans-serif;
+  background-image: url("https://images.unsplash.com/photo-1432071315934-33a387ee0437?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d70f20b108c95f729648d41a30a9fcf&auto=format&fit=crop&w=3300&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.site-wrapper {
+  max-width: 1000px;
+  min-width: 300px;
+  min-height: 100vh;
+  margin: auto;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 300px 200px -webkit-max-content max-content;
+  grid-template-rows: 300px 200px max-content max-content;
+  grid-template-areas: "header" "search" "current" "forecast" "footer";
+}
+
+@media (max-width: 640px) {
+  .site-wrapper {
+    grid-template-rows: 100px auto -webkit-max-content max-content;
+    grid-template-rows: 100px auto max-content max-content;
+    grid-template-areas: "search" "header" "current" "forecast" "footer";
+  }
+}
+
+@media (max-width: 320px) {
+  .site-wrapper {
+    grid-template-rows: auto;
+    grid-gap: 0;
+  }
+}
+
+.header {
+  grid-area: header;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0 20px;
+  -webkit-animation: 0.5s ease-out 0s 1 slideInFromTop;
+          animation: 0.5s ease-out 0s 1 slideInFromTop;
+}
+
+@media (max-width: 320px) {
+  .header {
+    margin: 70px 0 20px 0;
+  }
+}
+
+.header .title {
+  font-family: "Lobster", cursive;
+  font-size: 80px;
+}
+
+@media (max-width: 640px) {
+  .header .title {
+    font-size: 32px;
+  }
+}
+
+.header #city {
+  grid-area: city;
+  font-family: "Lobster", cursive;
+  font-size: 24px;
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .header #city {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header #city {
+    font-size: 13.33333px;
+  }
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.footer .footer span {
+  color: white;
+  font-size: 10.66667px;
 }
