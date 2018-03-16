@@ -1,30 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-input {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-input::-webkit-input-placeholder {
-  color: gray;
-}
-
-form {
-  width: 100%;
-  height: 100%;
-}
-
 @-webkit-keyframes slideInFromTop {
   0% {
     -webkit-transform: translateY(-100%);
@@ -71,8 +44,8 @@ form {
 
 @-webkit-keyframes slideInFromLeft {
   0% {
-    -webkit-transform: translateX(-200%);
-            transform: translateX(-200%);
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -82,8 +55,8 @@ form {
 
 @keyframes slideInFromLeft {
   0% {
-    -webkit-transform: translateX(-200%);
-            transform: translateX(-200%);
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -93,8 +66,8 @@ form {
 
 @-webkit-keyframes slideInFromRight {
   0% {
-    -webkit-transform: translateX(200%);
-            transform: translateX(200%);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -104,8 +77,8 @@ form {
 
 @keyframes slideInFromRight {
   0% {
-    -webkit-transform: translateX(200%);
-            transform: translateX(200%);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -207,6 +180,33 @@ form {
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input::-webkit-input-placeholder {
+  color: gray;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
 .search-box {
   z-index: 2;
   grid-area: search;
@@ -250,10 +250,11 @@ form {
             animation: 0.5s slideInFromBottom;
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     border-radius: 0;
     margin: 0;
     max-width: inherit;
-    width: 100%;
     background-color: rgba(34, 34, 44, 0.9);
   }
 }
@@ -268,6 +269,7 @@ form {
       -ms-flex: 1 1;
           flex: 1 1;
   border-radius: 25px 0 0 25px;
+  font-family: "Saira Condensed", sans-serif;
 }
 
 .search-box .button.submit {
@@ -292,6 +294,11 @@ form {
     font-size: 16px;
     color: white;
   }
+}
+
+.search-box input::-webkit-input-placeholder {
+  margin: 0;
+  padding: 0;
 }
 
 .current-day,
@@ -595,7 +602,7 @@ body {
 }
 
 .header #city {
-  text-shadow: 1px 1px 1px #22222c;
+  text-shadow: 1px 1px 0px #22222c;
   grid-area: city;
   font-family: "Lobster", cursive;
   font-size: 24px;

@@ -23,10 +23,11 @@
     animation: 0.5s slideInFromBottom;
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     border-radius: 0;
     margin: 0;
     max-width: inherit;
-    width: 100%;
     background-color: rgba(34, 34, 44, 0.9);
   }
   .button {
@@ -35,6 +36,7 @@
       padding: 10px;
       flex: 1 1;
       border-radius: 25px 0 0 25px;
+      font-family: $ff-main;
     }
     &.submit {
       border-radius: 0 25px 25px 0;
@@ -52,5 +54,10 @@
       font-size: $fz-normal;
       color: $fc-second;
     }
+  }
+  input::-webkit-input-placeholder {
+    // font-family: $ff-main;
+    margin: 0;
+    padding: 0;
   }
 }

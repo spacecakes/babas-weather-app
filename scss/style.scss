@@ -1,7 +1,7 @@
-@import "reset";
-@import "mixins";
 @import "variables";
+@import "mixins";
 @import "animations";
+@import "reset";
 @import "nav";
 @import "forecasts";
 
@@ -59,7 +59,7 @@ body {
     }
   }
   #city {
-    text-shadow: 1px 1px 1px $fc-main;
+    text-shadow: 1px 1px 0px $fc-main;
     grid-area: city;
     font-family: $ff-headline;
     font-size: $fz-big;
