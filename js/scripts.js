@@ -8,7 +8,7 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
         document.querySelector('#coordinates').textContent = `
         Latitude ${position.coords.latitude}°,
-        Longitude ${position.coords.longitude}°`;
+        longitude ${position.coords.longitude}°`;
         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
         getForecast(currentLocation);
     });

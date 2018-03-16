@@ -42,5 +42,8 @@
         background-color: $c-hover;
       }
     }
+    @include breakpoint(smartphone-big) {
+      font-size: $fz-normal;
+    }
   }
 }

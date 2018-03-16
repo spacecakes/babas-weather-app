@@ -38,6 +38,10 @@ body {
       "forecast"
       "footer";
   }
+  @include breakpoint(dumbphone) {
+    grid-template-rows: auto;
+    grid-gap: 0;
+  }
 }
 
 .header {
@@ -45,6 +49,10 @@ body {
   align-self: flex-end;
   margin: 0 20px;
   animation: 0.5s ease-out 0s 1 slideInFromTop;
+  @include breakpoint(dumbphone) {
+    margin: 70px 0 20px 0;
+    // background-color: $bc-main;
+  }
 }
 .title {
   font-family: $ff-headline;
@@ -61,6 +69,9 @@ body {
   @include breakpoint(smartphone-big) {
     font-size: $fz-normal;
   }
+  @include breakpoint(dumbphone) {
+    font-size: $fz-small;
+  }
 }
 
 .footer {
@@ -74,15 +85,18 @@ body {
 .current-day,
 .forecast-wrapper {
   animation: 1s ease fadeIn;
-
   box-shadow: $bs-main;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: $bc-main;
   border-radius: 5px;
   padding: 10px;
   margin: 0 20px;
   @supports (-webkit-backdrop-filter: blur()) {
     -webkit-backdrop-filter: blur(5px);
-    background-color: rgba(255, 255, 255, 0.5);
+  }
+  @include breakpoint(dumbphone) {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
@@ -136,44 +150,43 @@ body {
   }
   .conditions {
     align-self: center;
-    @include breakpoint(smartphone-big) {
-      font-size: $fz-big;
-    }
-    @include breakpoint(smartphone-big) {
-      flex: 1 1;
-    }
-    @include breakpoint(smartphone-small) {
-      flex: 1 1 100%;
-    }
-  }
-  .conditions {
     flex: 1 1 50%;
   }
   .misc {
     font-size: $fz-normal;
     flex: 1 1 20%;
-    @include breakpoint(tablet) {
-      justify-content: space-between;
-      flex-basis: 100%;
-    }
   }
   .misc * {
     flex: 1 1 50%;
     text-align: left;
-    @include breakpoint(tablet) {
+  }
+  @include breakpoint(tablet) {
+    .misc {
+      justify-content: space-between;
+      flex-basis: 100%;
+    }
+    .misc * {
       flex-basis: 10%;
     }
-    @include breakpoint(smartphone-big) {
+  }
+  @include breakpoint(smartphone-big) {
+    .conditions {
+      font-size: $fz-big;
+    }
+    .icon {
+      flex: 1 1 50%;
+      max-height: 64px;
+    }
+    .temp {
+      flex: 1 1 50%;
+    }
+    .misc * {
       flex-basis: 30%;
     }
     @include breakpoint(smartphone-small) {
-      flex-basis: 50%;
-    }
-  }
-  .icon {
-    @include breakpoint(smartphone-big) {
-      flex-basis: 100%;
-      max-height: 64px;
+      .misc * {
+        flex-basis: 50%;
+      }
     }
   }
 }
@@ -182,7 +195,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // align-content: flex-start;
   .conditions {
     font-size: $fz-big;
     flex: 1;
@@ -207,12 +219,17 @@ body {
       flex-direction: row;
     }
     .misc * {
-      flex: 0 1 50%;
+      flex: 1 1 50%;
     }
-    @include breakpoint(smartphone-small) {
-      .misc * {
-        flex-basis: 100%;
-      }
+  }
+  @include breakpoint(smartphone-small) {
+    .misc * {
+      flex-basis: 100%;
+    }
+  }
+  @include breakpoint(dumbphone) {
+    .misc * {
+      flex-basis: 50%;
     }
   }
 }
