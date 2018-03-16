@@ -296,11 +296,6 @@ form {
   }
 }
 
-.search-box input::-webkit-input-placeholder {
-  margin: 0;
-  padding: 0;
-}
-
 .current-day,
 .forecast-wrapper {
   -webkit-animation: 1s ease fadeIn;
@@ -577,6 +572,7 @@ body {
     grid-template-rows: auto 100px max-content max-content;
     grid-template-areas: "search" "header" "current" "forecast" "footer";
     grid-gap: 10px;
+    padding-bottom: 70px;
   }
 }
 
@@ -622,6 +618,7 @@ body {
 }
 
 .footer {
+  line-height: 1;
   grid-area: footer;
   -webkit-animation: 0.5s slideInFromBottom;
           animation: 0.5s slideInFromBottom;

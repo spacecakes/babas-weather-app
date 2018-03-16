@@ -39,6 +39,7 @@ body {
       "forecast"
       "footer";
     grid-gap: 10px;
+    padding-bottom: 70px;
   }
   @include breakpoint(smartphone) {
   }
@@ -74,6 +75,7 @@ body {
 }
 
 .footer {
+  line-height: 1;
   grid-area: footer;
   animation: 0.5s slideInFromBottom;
 
