@@ -30,18 +30,17 @@ body {
     "current"
     "forecast"
     "footer";
-  @include breakpoint(smartphone-big) {
-    grid-template-rows: 100px auto max-content max-content;
+  @include breakpoint(phablet) {
+    grid-template-rows: auto 100px max-content max-content;
     grid-template-areas:
       "search"
       "header"
       "current"
       "forecast"
       "footer";
+    grid-gap: 10px;
   }
-  @include breakpoint(dumbphone) {
-    grid-template-rows: auto;
-    grid-gap: 0;
+  @include breakpoint(smartphone) {
   }
 }
 
@@ -50,24 +49,22 @@ body {
   align-self: flex-end;
   margin: 0 20px;
   animation: 0.5s ease-out 0s 1 slideInFromTop;
-  @include breakpoint(dumbphone) {
-    margin: 70px 0 20px 0;
-    // background-color: $bc-main;
-  }
-
   .title {
     font-family: $ff-headline;
     font-size: $fz-massive;
-    @include breakpoint(smartphone-big) {
+    text-shadow: 1px 1px 1px $fc-second;
+
+    @include breakpoint(phablet) {
       font-size: $fz-huge;
     }
   }
   #city {
+    text-shadow: 1px 1px 1px $fc-main;
     grid-area: city;
     font-family: $ff-headline;
     font-size: $fz-big;
-    color: white;
-    @include breakpoint(smartphone-big) {
+    color: $fc-second;
+    @include breakpoint(phablet) {
       font-size: $fz-normal;
     }
     @include breakpoint(dumbphone) {
@@ -78,9 +75,13 @@ body {
 
 .footer {
   grid-area: footer;
+  animation: 0.5s slideInFromBottom;
 
-  .footer span {
-    color: white;
+  span {
+    color: $fc-second;
     font-size: $fz-tiny;
+    @include breakpoint(phablet) {
+      font-size: $fz-minimal;
+    }
   }
 }

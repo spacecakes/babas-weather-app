@@ -23,7 +23,7 @@
   @include breakpoint(tablet) {
     grid-template: repeat(2, 1fr) / repeat(3, 1fr);
   }
-  @include breakpoint(smartphone-big) {
+  @include breakpoint(phablet) {
     grid-template: repeat(3, 1fr) / repeat(2, 1fr);
   }
   @include breakpoint(dumbphone) {
@@ -85,7 +85,7 @@
       flex-basis: 10%;
     }
   }
-  @include breakpoint(smartphone-big) {
+  @include breakpoint(phablet) {
     .conditions {
       font-size: $fz-big;
     }
@@ -99,7 +99,7 @@
     .misc * {
       flex-basis: 30%;
     }
-    @include breakpoint(smartphone-small) {
+    @include breakpoint(smartphone) {
       .misc * {
         flex-basis: 50%;
       }
@@ -138,7 +138,7 @@
       flex: 1 1 50%;
     }
   }
-  @include breakpoint(smartphone-small) {
+  @include breakpoint(smartphone) {
     .misc * {
       flex-basis: 100%;
     }

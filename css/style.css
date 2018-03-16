@@ -27,8 +27,8 @@ form {
 
 @-webkit-keyframes slideInFromTop {
   0% {
-    -webkit-transform: translateY(-200%);
-            transform: translateY(-200%);
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
   }
   100% {
     -webkit-transform: translateY(0);
@@ -38,8 +38,8 @@ form {
 
 @keyframes slideInFromTop {
   0% {
-    -webkit-transform: translateY(-200%);
-            transform: translateY(-200%);
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
   }
   100% {
     -webkit-transform: translateY(0);
@@ -49,8 +49,8 @@ form {
 
 @-webkit-keyframes slideInFromBottom {
   0% {
-    -webkit-transform: translateY(200%);
-            transform: translateY(200%);
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
   }
   100% {
     -webkit-transform: translateY(0);
@@ -60,8 +60,8 @@ form {
 
 @keyframes slideInFromBottom {
   0% {
-    -webkit-transform: translateY(200%);
-            transform: translateY(200%);
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
   }
   100% {
     -webkit-transform: translateY(0);
@@ -212,8 +212,6 @@ form {
   grid-area: search;
   max-width: 400px;
   height: 50px;
-  -webkit-animation: 0.5s pulse;
-          animation: 0.5s pulse;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -228,15 +226,6 @@ form {
   transition: all 0.3s ease-out;
 }
 
-@media (max-width: 640px) {
-  .search-box {
-    position: fixed;
-    border-radius: 0;
-    margin: 0;
-    max-width: inherit;
-  }
-}
-
 @media (min-width: 1025px) {
   .search-box:hover {
     -webkit-transform: scale(1.2);
@@ -245,6 +234,27 @@ form {
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
+  }
+}
+
+@media (max-width: 1024px) {
+  .search-box {
+    -webkit-animation: 0.5s pulse;
+            animation: 0.5s pulse;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-box {
+    -webkit-animation: 0.5s slideInFromBottom;
+            animation: 0.5s slideInFromBottom;
+    position: fixed;
+    bottom: 0;
+    border-radius: 0;
+    margin: 0;
+    max-width: inherit;
+    width: 100%;
+    background-color: rgba(34, 34, 44, 0.9);
   }
 }
 
@@ -280,6 +290,7 @@ form {
 @media (max-width: 640px) {
   .search-box .button {
     font-size: 16px;
+    color: white;
   }
 }
 
@@ -555,16 +566,10 @@ body {
 
 @media (max-width: 640px) {
   .site-wrapper {
-    grid-template-rows: 100px auto -webkit-max-content max-content;
-    grid-template-rows: 100px auto max-content max-content;
+    grid-template-rows: auto 100px -webkit-max-content max-content;
+    grid-template-rows: auto 100px max-content max-content;
     grid-template-areas: "search" "header" "current" "forecast" "footer";
-  }
-}
-
-@media (max-width: 320px) {
-  .site-wrapper {
-    grid-template-rows: auto;
-    grid-gap: 0;
+    grid-gap: 10px;
   }
 }
 
@@ -577,15 +582,10 @@ body {
           animation: 0.5s ease-out 0s 1 slideInFromTop;
 }
 
-@media (max-width: 320px) {
-  .header {
-    margin: 70px 0 20px 0;
-  }
-}
-
 .header .title {
   font-family: "Lobster", cursive;
   font-size: 80px;
+  text-shadow: 1px 1px 1px white;
 }
 
 @media (max-width: 640px) {
@@ -595,6 +595,7 @@ body {
 }
 
 .header #city {
+  text-shadow: 1px 1px 1px #22222c;
   grid-area: city;
   font-family: "Lobster", cursive;
   font-size: 24px;
@@ -615,9 +616,17 @@ body {
 
 .footer {
   grid-area: footer;
+  -webkit-animation: 0.5s slideInFromBottom;
+          animation: 0.5s slideInFromBottom;
 }
 
-.footer .footer span {
+.footer span {
   color: white;
   font-size: 10.66667px;
+}
+
+@media (max-width: 640px) {
+  .footer span {
+    font-size: 8px;
+  }
 }

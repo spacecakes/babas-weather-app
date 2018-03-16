@@ -1,6 +1,6 @@
 @keyframes slideInFromTop {
   0% {
-    transform: translateY(-200%);
+    transform: translateY(-100%);
   }
   100% {
     transform: translateY(0);
@@ -9,7 +9,7 @@
 
 @keyframes slideInFromBottom {
   0% {
-    transform: translateY(200%);
+    transform: translateY(100%);
   }
   100% {
     transform: translateY(0);

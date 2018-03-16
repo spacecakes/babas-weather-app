@@ -1,6 +1,7 @@
 // Font sizes
 $fz-root: 16px;
 
+$fz-minimal: $fz-root / 2;
 $fz-tiny: $fz-root / 1.5;
 $fz-small: $fz-root / 1.2;
 $fz-normal: $fz-root;
@@ -14,6 +15,7 @@ $ff-headline: "Lobster", cursive;
 
 // Colors
 $fc-main: rgb(34, 34, 44);
+$fc-second: rgb(255, 255, 255);
 $c-hover: rgba(79, 202, 126, 0.7);
 $bc-main: rgba(255, 255, 255, 0.7);
 
