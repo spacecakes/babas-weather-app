@@ -49,13 +49,12 @@ function renderForecast(data) {
         .textContent = `Pres. ${(data.current.pressure_mb / 1000).toFixed(3)} bar`;
 
     // Add weather data to elements
-    let counter = 0;
+    let counter = 1;
     data.forecast.forecastday.forEach(forecastday => {
-        counter++;
         document.querySelector(`#day-${counter} .icon`)
             .setAttribute('src', `https:${forecastday.day.condition.icon}`);
         document.querySelector(`#day-${counter} .day`)
-            .textContent = getDay(counter);
+            .textContent = getDay(counter - 1);
         document.querySelector(`#day-${counter} .temp`)
             .textContent = Math.round(forecastday.day.avgtemp_c) + ' °C';
         document.querySelector(`#day-${counter} .conditions`)
@@ -72,6 +71,7 @@ function renderForecast(data) {
             .textContent = forecastday.astro.sunrise;
         document.querySelector(`#day-${counter} .sunset`)
             .textContent = forecastday.astro.sunset;
+        counter++;
     });
 
     // Add location to search field
