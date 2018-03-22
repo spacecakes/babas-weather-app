@@ -571,6 +571,10 @@ form {
   }
 }
 
+.hide {
+  display: none;
+}
+
 body {
   color: #22222c;
   font-family: "Saira Condensed", sans-serif;

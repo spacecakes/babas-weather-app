@@ -18,12 +18,12 @@
             <h2 id="city">Baba says hello!</h2>
         </header>
         <form id="find-city" class="search-box">
-            <input type="text" id="city-input" placeholder="Find city..." class="button search">
+            <input type="text" id="city-input" placeholder="Geolocating..." class="button search">
             <input type="button" id="find-me" value="➶" class="button location">
             <input type="submit" value="→" class="button submit">
         </form>
 
-        <div class="current-day" id="day-1">
+        <div class="current-day hide" id="day-1">
             <div class="day"></div>
             <img src="" alt="" class="icon">
             <div class="temp"></div>
@@ -39,8 +39,7 @@
                 <p class="sunset"></p>
             </div>
         </div>
-        <div class="forecast-wrapper">
-
+        <div class="forecast-wrapper hide" id="forecast">
             <div class="forecast-day" id="day-2">
                 <div class="day"></div>
                 <img src="" alt="" class="icon">
