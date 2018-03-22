@@ -88,12 +88,11 @@ function searchCity(e) {
     getForecast(city);
 }
 
-// Render data on load
+// Populate website on load
 function populateOnLoad() {
     getLocation();
     getForecast();
     setTimeout(() => renderForecast(forecast), 1000);
 }
 
-// Get data on load
 populateOnLoad();
