@@ -1,5 +1,5 @@
 let currentLocation;
-let forecast = {};
+let forecast;
 
 // Get geolocation
 document.getElementById('find-me').addEventListener('click', getLocation);
@@ -15,7 +15,6 @@ function getLocation() {
 }
 
 // Get date and convert to days
-
 function getDay(offset = 0) {
     const day = new Date();
     const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -28,6 +27,11 @@ function getForecast(city = 'stockholm') {
         .then(response => response.json()) // Parse response to JSON
         .then(json => forecast = json)
         .catch(err => renderErrors(err));
+}
+
+// Save forecast to local storage (currently not used)
+function saveForecast(data) {
+    localStorage.setItem('forecast', JSON.stringify(data));
 }
 
 // Render error message if fetch is unsuccessful
@@ -98,6 +102,7 @@ function searchCity(e) {
     e.preventDefault();
     const city = document.getElementById('city-input').value;
     getForecast(city);
+    setTimeout(() => renderForecast(forecast), 1000);
 }
 
 // Populate website on load
