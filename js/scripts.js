@@ -1,6 +1,8 @@
 let currentLocation;
 let forecast;
 
+let error;
+
 // Get geolocation
 document.getElementById('find-me').addEventListener('click', getLocation);
 
@@ -31,6 +33,7 @@ function getForecast(city = 'stockholm') {
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
     {
+        error = err;
         document.getElementById('city-input').placeholder = 'Spell properly';
         document.getElementById('city-input').value = '';
         document.querySelector('#city').textContent = 'Y U NO forecast?';
@@ -39,7 +42,7 @@ function renderErrors(err) {
 }
 
 // Write API data to DOM
-function renderForecast(data) {
+function renderForecast(data = 'Stockholm') {
     // Add city and timestamp to elements
     document.querySelector('#city')
         .textContent = `Weather forecast for ${data.location.name}, ${data.location.country} on ${getDay()}`;
