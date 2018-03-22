@@ -35,7 +35,6 @@ async function getForecast(city) {
     }
 }
 
-
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
     const input = document.getElementById('city-input');
@@ -52,7 +51,6 @@ function renderErrors(err) {
     headline.textContent = 'Y U NO forecast?';
     console.log(err.message);
 }
-
 
 // Write API data to DOM
 function renderForecast(data) {
@@ -146,4 +144,5 @@ async function init() {
         renderErrors(err);
     }
 }
+
 init();
