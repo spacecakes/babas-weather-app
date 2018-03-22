@@ -11,6 +11,8 @@ function getLocation() {
         longitude ${position.coords.longitude}°`;
         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
         getForecast(currentLocation);
+        setTimeout(() => renderForecast(forecast), 1000);
+
     });
 }
 
@@ -30,9 +32,7 @@ function getForecast(city = 'stockholm') {
 }
 
 // Save forecast to local storage (currently not used)
-function saveForecast(data) {
-    localStorage.setItem('forecast', JSON.stringify(data));
-}
+function saveForecast(data) { localStorage.setItem('forecast', JSON.stringify(data)); }
 
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
