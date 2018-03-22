@@ -18,19 +18,6 @@ function getDay(offset = 0) {
     return weekday[(day.getDay() + offset) % 7];
 }
 
-// Fetch forecast data from API 
-// async function getForecast(location) {
-//     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${location}&days=7`)
-//         .then(response => {
-//             if (response.ok)
-//                 return response.json(); // Parse response to JSON
-//             else
-//                 throw new Error("Couldn't find that city: " + response.statusText);
-//         })
-//         .then(json => forecast = json)
-//         .catch(err => renderErrors(err));
-// }
-
 async function getForecast(city) {
     try {
         const response = await fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`);
@@ -54,7 +41,7 @@ function renderErrors(err) {
     const input = document.getElementById('city-input');
     const headline = document.getElementById('city');
     if (err.message === 'Error: Empty search') {
-        input.placeholder = '🤦‍♂️';
+        input.placeholder = '🙄';
         setTimeout(() => (input.placeholder = 'Type in something'), 500);
     }
     else {
