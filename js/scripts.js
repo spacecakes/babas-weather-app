@@ -38,7 +38,7 @@ async function getForecast(city) {
             return response.json();
         }
         else if (city === '') {
-            throw new Error('empty search');
+            throw new Error('Empty search');
         }
         else {
             throw new Error(response.statusText);
@@ -51,18 +51,21 @@ async function getForecast(city) {
 
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
-    {
-        if (err.message == 'Error: empty search') {
-            document.getElementById('city-input').placeholder = 'Type in something';
-        }
-        else {
-            document.getElementById('city-input').placeholder = 'Spell properly';
-        }
-        document.getElementById('city-input').value = '';
-        document.querySelector('#city').textContent = 'Y U NO forecast? 💩';
-        console.log(err.message);
+    const input = document.getElementById('city-input');
+    const headline = document.getElementById('city');
+    if (err.message === 'Error: Empty search') {
+        input.placeholder = '🤦‍♂️';
+        setTimeout(() => (input.placeholder = 'Type in something'), 500);
     }
+    else {
+        input.placeholder = '💩';
+        setTimeout(() => (input.placeholder = 'Spell properly'), 500);
+    }
+    input.value = '';
+    headline.textContent = 'Y U NO forecast?';
+    console.log(err.message);
 }
+
 
 // Write API data to DOM
 function renderForecast(data) {
