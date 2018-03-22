@@ -14,12 +14,15 @@ function getLocation() {
     });
 }
 
+// Get date and convert to days
+
 function getDay(offset = 0) {
     const day = new Date();
     const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return weekday[(day.getDay() + offset) % 7];
 }
 
+// Fetch forecast data from API 
 function getForecast(city = 'stockholm') {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => response.json()) // Parse response to JSON
@@ -27,6 +30,7 @@ function getForecast(city = 'stockholm') {
         .catch(err => renderErrors(err));
 }
 
+// Render error message if fetch is unsuccessful
 function renderErrors(err) {
     {
         document.getElementById('city-input').placeholder = 'Spell properly';
@@ -36,6 +40,7 @@ function renderErrors(err) {
     }
 }
 
+// Write API data to DOM
 function renderForecast(data) {
     // Add city and timestamp to elements
     document.querySelector('#city')
@@ -80,7 +85,7 @@ function renderForecast(data) {
     document.getElementById('city-input').value = '';
 }
 
-// Search city functionality
+// Search box functionality
 document.getElementById('find-city').addEventListener('submit', searchCity);
 function searchCity(e) {
     e.preventDefault();
