@@ -18,8 +18,6 @@ function getLocalWeather() {
     getForecast();
 }
 
-// Get local forecast
-
 // Get date and convert to days
 function getDay(offset = 0) {
     const day = new Date();
