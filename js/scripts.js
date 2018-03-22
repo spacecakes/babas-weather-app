@@ -10,13 +10,15 @@ function getLocation() {
         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
     });
 }
-getLocation();
 
 // Locate button
 document.getElementById('find-me').addEventListener('click', getLocalWeather);
 
+
+// Get current location and forecast
 function getLocalWeather() {
-    getForecast();
+    getLocation();
+    setTimeout(() => getForecast(currentLocation), 200);
 }
 
 // Get date and convert to days
@@ -111,6 +113,4 @@ function searchCity(e) {
 }
 
 // Get data on load
-setTimeout(() => {
-    getLocalWeather();
-}, 1000);
+getLocalWeather();
