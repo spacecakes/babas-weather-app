@@ -35,6 +35,13 @@
 .forecast-day {
   .icon {
     object-fit: contain;
+    order: 1;
+  }
+  .temp {
+    order: 2;
+  }
+  .conditions {
+    order: 3;
   }
   .sunrise,
   .sunset {
@@ -45,6 +52,7 @@
     margin: 10px;
   }
   .misc {
+    order: 4;
     display: flex;
     flex-wrap: wrap;
   }
@@ -84,6 +92,9 @@
     .misc * {
       flex-basis: 10%;
     }
+    .temp {
+      order: 4;
+    }
   }
   @include breakpoint(phablet) {
     .conditions {
@@ -95,6 +106,7 @@
     }
     .temp {
       flex: 1 1 50%;
+      order: initial;
     }
     .misc * {
       flex-basis: 30%;
