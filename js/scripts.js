@@ -34,8 +34,7 @@ function getForecast(city = currentLocation) {
             else
                 throw new Error("Couldn't find that city");
         })
-
-        .then(json => renderForecast(json)).catch(err => renderErrors(err));
+        .then(json => renderHTML(json)).catch(err => renderErrors(err));
 }
 
 // Render error message if fetch is unsuccessful
@@ -49,7 +48,7 @@ function renderErrors(err) {
 }
 
 // Write API data to DOM
-function renderForecast(data = 'Stockholm') {
+function renderHTML(data = currentLocation) {
     // Add city and timestamp to elements
     document.querySelector('#city')
         .textContent = `Weather forecast for ${data.location.name}, ${data.location.country} on ${getDay()}`;
