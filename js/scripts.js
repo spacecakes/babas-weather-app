@@ -48,9 +48,9 @@ async function getForecast(city) {
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
     {
-        document.getElementById('city-input').placeholder = 'Spell properly 💩';
+        document.getElementById('city-input').placeholder = 'Spell properly';
         document.getElementById('city-input').value = '';
-        document.querySelector('#city').textContent = 'Y U NO forecast?';
+        document.querySelector('#city').textContent = 'Y U NO forecast? 💩';
         console.log(err.message);
     }
 }
