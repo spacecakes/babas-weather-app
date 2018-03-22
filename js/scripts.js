@@ -1,25 +1,25 @@
-let currentLocation = 'Stockholm'; // Fallback for geolocation
+let currentLocation = '';
 let forecast;
 
 // Get geolocation
 function getLocation() {
-    navigator.geolocation.getCurrentPosition((position) => {
-        document.querySelector('#coordinates').textContent = `
-        Latitude ${position.coords.latitude}°,
-        longitude ${position.coords.longitude}°`;
-        currentLocation = position.coords.latitude + ',' + position.coords.longitude;
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
     });
 }
 
+
+// function getLocation() {
+//     navigator.geolocation.getCurrentPosition((position) => {
+//         document.querySelector('#coordinates').textContent = `
+//         Latitude ${position.coords.latitude}°,
+//         longitude ${position.coords.longitude}°`;
+//         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
+//     });
+// }
+
 // Locate button
-document.getElementById('find-me').addEventListener('click', getLocalWeather);
-
-
-// Get current location and forecast
-function getLocalWeather() {
-    getLocation();
-    setTimeout(() => newForecast(currentLocation), 200);
-}
+document.getElementById('find-me').addEventListener('click', init);
 
 // Get date and convert to days
 function getDay(offset = 0) {
@@ -29,16 +29,15 @@ function getDay(offset = 0) {
 }
 
 // Fetch forecast data from API 
-function newForecast(city = currentLocation) {
-    fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
+async function getForecast(location) {
+    fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${location}&days=7`)
         .then(response => {
             if (response.ok)
                 return response.json(); // Parse response to JSON
             else
-                throw new Error("Couldn't find that city");
+                throw new Error("Couldn't find that city: " + response.statusText);
         })
         .then(json => forecast = json)
-        .then(json => renderHTML(json))
         .catch(err => renderErrors(err));
 }
 
@@ -53,12 +52,17 @@ function renderErrors(err) {
 }
 
 // Write API data to DOM
-function renderHTML(data = forecast) {
+function renderHTML(data, location) {
     // Add city and timestamp to elements
     document.querySelector('#city')
         .textContent = `Weather forecast for ${data.location.name}, ${data.location.country} on ${getDay()}`;
     document.querySelector('#updated')
         .textContent = `Last updated on ${getDay()} ${data.current.last_updated}`;
+
+    // Write location data 
+    document.querySelector('#coordinates').textContent = `
+        Latitude ${location.coords.latitude}°,
+        longitude ${location.coords.longitude}°`;
 
     // Add specific current weather data
     document.querySelector(`#day-1 .feels-like`)
@@ -108,9 +112,20 @@ function renderHTML(data = forecast) {
 document.getElementById('find-city').addEventListener('submit', findLocation);
 function findLocation(e) {
     e.preventDefault();
-    const city = document.getElementById('city-input').value;
-    newForecast(city);
+    const searchTerm = document.getElementById('city-input').value;
+    getForecast(searchTerm);
+}
+
+// Run app
+async function init(searchTerm) {
+    try {
+        currentLocation = await getLocation();
+        forecast = await getForecast(`${currentLocation.coords.latitude},${currentLocation.coords.longitude}`);
+        renderHTML(forecast, currentLocation);
+    } catch (err) {
+        renderErrors(err);
+    }
 }
 
 // Get data on load
-getLocalWeather();
+init();
