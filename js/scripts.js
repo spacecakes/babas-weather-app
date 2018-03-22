@@ -52,17 +52,12 @@ function renderErrors(err) {
 }
 
 // Write API data to DOM
-function renderHTML(data, location) {
+function renderForecast(data) {
     // Add city and timestamp to elements
     document.querySelector('#city')
         .textContent = `Weather forecast for ${data.location.name}, ${data.location.country} on ${getDay()}`;
     document.querySelector('#updated')
         .textContent = `Last updated on ${getDay()} ${data.current.last_updated}`;
-
-    // Write location data 
-    document.querySelector('#coordinates').textContent = `
-        Latitude ${location.coords.latitude}°,
-        longitude ${location.coords.longitude}°`;
 
     // Add specific current weather data
     document.querySelector(`#day-1 .feels-like`)
@@ -108,24 +103,43 @@ function renderHTML(data, location) {
     document.getElementById('day-1').classList.remove('hide');
 }
 
-// Search box functionality
-document.getElementById('find-city').addEventListener('submit', findLocation);
-function findLocation(e) {
-    e.preventDefault();
-    const searchTerm = document.getElementById('city-input').value;
-    getForecast(searchTerm);
+// Write location data to DOM
+function renderCoordinates(location) {
+    // Write location data 
+    document.querySelector('#coordinates').textContent = `
+        Latitude ${location.coords.latitude.toFixed(5)}°,
+        longitude ${location.coords.longitude.toFixed(5)}°`;
 }
 
-// Run app
-async function init(searchTerm) {
+// Search box functionality
+document.getElementById('find-city').addEventListener('submit', findLocation);
+async function findLocation(e) {
+    e.preventDefault();
+    const searchTerm = document.getElementById('city-input').value;
     try {
-        currentLocation = await getLocation();
-        forecast = await getForecast(`${currentLocation.coords.latitude},${currentLocation.coords.longitude}`);
-        renderHTML(forecast, currentLocation);
+        forecast = await getForecast(searchTerm);
+
+        setTimeout(() => { //How do I get rid of this?
+            renderForecast(forecast, searchTerm);
+        }, 500);
     } catch (err) {
         renderErrors(err);
     }
 }
 
-// Get data on load
+// Run application on page load
+async function init() {
+    try {
+        currentLocation = await getLocation();
+        const coordinates = `${currentLocation.coords.latitude},${currentLocation.coords.longitude}`;
+        forecast = await getForecast(coordinates);
+
+        setTimeout(() => { //How do I get rid of this?
+            renderForecast(forecast);
+            renderCoordinates(currentLocation);
+        }, 500);
+    } catch (err) {
+        renderErrors(err);
+    }
+}
 init();
