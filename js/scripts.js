@@ -11,8 +11,6 @@ function getLocation() {
         longitude ${position.coords.longitude}°`;
         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
         getForecast(currentLocation);
-        setTimeout(() => renderForecast(forecast), 1000);
-
     });
 }
 
@@ -29,9 +27,6 @@ function getForecast(city = 'stockholm') {
         .then(response => response.json()) // Parse response to JSON
         .then(json => renderForecast(json)).catch(err => renderErrors(err));
 }
-
-// Save forecast to local storage (currently not used)
-function saveForecast(data) { localStorage.setItem('forecast', JSON.stringify(data)); }
 
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
@@ -101,20 +96,8 @@ function searchCity(e) {
     e.preventDefault();
     const city = document.getElementById('city-input').value;
     getForecast(city);
-    setTimeout(() => renderForecast(forecast), 1000);
 }
 
-<<<<<<< HEAD
-// Populate website on load
-function populateOnLoad() {
-    getLocation();
-    getForecast();
-    setTimeout(() => renderForecast(forecast), 1000);
-}
-
-populateOnLoad();
-=======
 // Get data on load
 getLocation();
 getForecast();
->>>>>>> parent of 3faae51... not working yet
