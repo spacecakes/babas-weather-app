@@ -18,7 +18,7 @@ document.getElementById('find-me').addEventListener('click', getLocalWeather);
 // Get current location and forecast
 function getLocalWeather() {
     getLocation();
-    setTimeout(() => getForecast(currentLocation), 200);
+    setTimeout(() => newForecast(currentLocation), 200);
 }
 
 // Get date and convert to days
@@ -29,7 +29,7 @@ function getDay(offset = 0) {
 }
 
 // Fetch forecast data from API 
-function getForecast(city = currentLocation) {
+function newForecast(city = currentLocation) {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => {
             if (response.ok)
@@ -105,11 +105,11 @@ function renderHTML(data = forecast) {
 }
 
 // Search box functionality
-document.getElementById('find-city').addEventListener('submit', searchCity);
-function searchCity(e) {
+document.getElementById('find-city').addEventListener('submit', findLocation);
+function findLocation(e) {
     e.preventDefault();
     const city = document.getElementById('city-input').value;
-    getForecast(city);
+    newForecast(city);
 }
 
 // Get data on load
