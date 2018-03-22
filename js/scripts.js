@@ -1,7 +1,4 @@
 let currentLocation;
-let forecast;
-
-let error;
 
 // Get geolocation
 document.getElementById('find-me').addEventListener('click', getLocation);
