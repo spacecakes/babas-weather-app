@@ -8,16 +8,6 @@ function getLocation() {
     });
 }
 
-
-// function getLocation() {
-//     navigator.geolocation.getCurrentPosition((position) => {
-//         document.querySelector('#coordinates').textContent = `
-//         Latitude ${position.coords.latitude}°,
-//         longitude ${position.coords.longitude}°`;
-//         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
-//     });
-// }
-
 // Locate button
 document.getElementById('find-me').addEventListener('click', init);
 
@@ -29,17 +19,31 @@ function getDay(offset = 0) {
 }
 
 // Fetch forecast data from API 
-async function getForecast(location) {
-    fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${location}&days=7`)
-        .then(response => {
-            if (response.ok)
-                return response.json(); // Parse response to JSON
-            else
-                throw new Error("Couldn't find that city: " + response.statusText);
-        })
-        .then(json => forecast = json)
-        .catch(err => renderErrors(err));
+// async function getForecast(location) {
+//     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${location}&days=7`)
+//         .then(response => {
+//             if (response.ok)
+//                 return response.json(); // Parse response to JSON
+//             else
+//                 throw new Error("Couldn't find that city: " + response.statusText);
+//         })
+//         .then(json => forecast = json)
+//         .catch(err => renderErrors(err));
+// }
+
+async function getForecast(city) {
+    try {
+        const response = await fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`);
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Couldn't find that city. " + response.statusText);
+        }
+    } catch (err) {
+        throw new Error(err);
+    }
 }
+
 
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
@@ -47,7 +51,7 @@ function renderErrors(err) {
         document.getElementById('city-input').placeholder = 'Spell properly';
         document.getElementById('city-input').value = '';
         document.querySelector('#city').textContent = 'Y U NO forecast?';
-        console.log('Error: ', err.message);
+        console.log(err.message);
     }
 }
 
@@ -118,10 +122,7 @@ async function findLocation(e) {
     const searchTerm = document.getElementById('city-input').value;
     try {
         forecast = await getForecast(searchTerm);
-
-        setTimeout(() => { //How do I get rid of this?
-            renderForecast(forecast, searchTerm);
-        }, 500);
+        renderForecast(forecast, searchTerm);
     } catch (err) {
         renderErrors(err);
     }
@@ -133,11 +134,8 @@ async function init() {
         currentLocation = await getLocation();
         const coordinates = `${currentLocation.coords.latitude},${currentLocation.coords.longitude}`;
         forecast = await getForecast(coordinates);
-
-        setTimeout(() => { //How do I get rid of this?
-            renderForecast(forecast);
-            renderCoordinates(currentLocation);
-        }, 500);
+        renderForecast(forecast);
+        renderCoordinates(currentLocation);
     } catch (err) {
         renderErrors(err);
     }
