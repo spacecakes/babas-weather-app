@@ -1,6 +1,5 @@
 let currentLocation = 'Stockholm'; // Fallback for geolocation
 
-
 // Get geolocation
 function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -16,7 +15,7 @@ getLocation();
 document.getElementById('find-me').addEventListener('click', getLocalWeather);
 
 function getLocalWeather() {
-    getForecast(currentLocation);
+    getForecast();
 }
 
 // Get local forecast
