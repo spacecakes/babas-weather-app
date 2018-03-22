@@ -1,17 +1,25 @@
-let currentLocation;
+let currentLocation = 'Stockholm'; // Fallback for geolocation
+
 
 // Get geolocation
-document.getElementById('find-me').addEventListener('click', getLocation);
-
 function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
         document.querySelector('#coordinates').textContent = `
         Latitude ${position.coords.latitude}°,
         longitude ${position.coords.longitude}°`;
         currentLocation = position.coords.latitude + ',' + position.coords.longitude;
-        getForecast(currentLocation);
     });
 }
+getLocation();
+
+// Locate button
+document.getElementById('find-me').addEventListener('click', getLocalWeather);
+
+function getLocalWeather() {
+    getForecast(currentLocation);
+}
+
+// Get local forecast
 
 // Get date and convert to days
 function getDay(offset = 0) {
@@ -21,7 +29,7 @@ function getDay(offset = 0) {
 }
 
 // Fetch forecast data from API 
-function getForecast(city = 'stockholm') {
+function getForecast(city = currentLocation) {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => response.json()) // Parse response to JSON
         .then(json => renderForecast(json)).catch(err => renderErrors(err));
@@ -98,5 +106,6 @@ function searchCity(e) {
 }
 
 // Get data on load
-getLocation();
-getForecast();
+setTimeout(() => {
+    getLocalWeather();
+}, 1000);
