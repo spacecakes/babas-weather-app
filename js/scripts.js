@@ -48,7 +48,7 @@ async function getForecast(city) {
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
     {
-        document.getElementById('city-input').placeholder = 'Spell properly';
+        document.getElementById('city-input').placeholder = 'Spell properly 💩';
         document.getElementById('city-input').value = '';
         document.querySelector('#city').textContent = 'Y U NO forecast?';
         console.log(err.message);
@@ -131,11 +131,18 @@ async function findLocation(e) {
 // Run application on page load
 async function init() {
     try {
+        // Fetch new data
         currentLocation = await getLocation();
         const coordinates = `${currentLocation.coords.latitude},${currentLocation.coords.longitude}`;
         forecast = await getForecast(coordinates);
+
+        // Render data
         renderForecast(forecast);
         renderCoordinates(currentLocation);
+
+        // Save data
+        localStorage.setItem('location', coordinates);
+        localStorage.setItem('forecast', JSON.stringify(forecast));
     } catch (err) {
         renderErrors(err);
     }
