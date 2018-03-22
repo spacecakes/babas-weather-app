@@ -23,7 +23,8 @@ function getDay(offset = 0) {
 function getForecast(city = 'stockholm') {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => response.json()) // Parse response to JSON
-        .then(json => renderForecast(json)).catch(err => renderErrors(err));
+        .then(json => forecast = json)
+        .catch(err => renderErrors(err));
 }
 
 function renderErrors(err) {
@@ -90,3 +91,6 @@ function searchCity(e) {
 // Get data on load
 getLocation();
 getForecast();
+
+// Render data to DOM
+renderForecast(forecast);
