@@ -28,7 +28,13 @@ function getDay(offset = 0) {
 // Fetch forecast data from API 
 function getForecast(city = currentLocation) {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
-        .then(response => response.json()) // Parse response to JSON
+        .then(response => {
+            if (response.ok)
+                return response.json(); // Parse response to JSON
+            else
+                throw new Error("Couldn't find that city");
+        })
+
         .then(json => renderForecast(json)).catch(err => renderErrors(err));
 }
 
