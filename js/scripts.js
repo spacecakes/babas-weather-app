@@ -30,7 +30,6 @@ function getForecast(city = 'stockholm') {
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
     {
-        error = err;
         document.getElementById('city-input').placeholder = 'Spell properly';
         document.getElementById('city-input').value = '';
         document.querySelector('#city').textContent = 'Y U NO forecast?';
