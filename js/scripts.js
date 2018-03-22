@@ -27,8 +27,7 @@ function getDay(offset = 0) {
 function getForecast(city = 'stockholm') {
     fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`)
         .then(response => response.json()) // Parse response to JSON
-        .then(json => forecast = json)
-        .catch(err => renderErrors(err));
+        .then(json => renderForecast(json)).catch(err => renderErrors(err));
 }
 
 // Save forecast to local storage (currently not used)
@@ -105,6 +104,7 @@ function searchCity(e) {
     setTimeout(() => renderForecast(forecast), 1000);
 }
 
+<<<<<<< HEAD
 // Populate website on load
 function populateOnLoad() {
     getLocation();
@@ -113,3 +113,8 @@ function populateOnLoad() {
 }
 
 populateOnLoad();
+=======
+// Get data on load
+getLocation();
+getForecast();
+>>>>>>> parent of 3faae51... not working yet
