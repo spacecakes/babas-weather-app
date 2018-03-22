@@ -36,8 +36,12 @@ async function getForecast(city) {
         const response = await fetch(`https://api.apixu.com/v1/forecast.json?key=718bc1aabbf147fca6782545181403&q=${city}&days=7`);
         if (response.ok) {
             return response.json();
-        } else {
-            throw new Error("Couldn't find that city. " + response.statusText);
+        }
+        else if (city === '') {
+            throw new Error('empty search');
+        }
+        else {
+            throw new Error(response.statusText);
         }
     } catch (err) {
         throw new Error(err);
@@ -48,7 +52,12 @@ async function getForecast(city) {
 // Render error message if fetch is unsuccessful
 function renderErrors(err) {
     {
-        document.getElementById('city-input').placeholder = 'Spell properly';
+        if (err.message == 'Error: empty search') {
+            document.getElementById('city-input').placeholder = 'Type in something';
+        }
+        else {
+            document.getElementById('city-input').placeholder = 'Spell properly';
+        }
         document.getElementById('city-input').value = '';
         document.querySelector('#city').textContent = 'Y U NO forecast? 💩';
         console.log(err.message);
