@@ -39,13 +39,18 @@ async function getForecast(city) {
 function renderErrors(err) {
     const input = document.getElementById('city-input');
     const headline = document.getElementById('city');
+    const value = input.value;
+    const placeholder = input.placeholder;
+
     if (err.message === 'Error: Empty search') {
         input.placeholder = '🙄';
-        setTimeout(() => (input.placeholder = 'Type in something'), 500);
+        setTimeout(() => (input.placeholder = 'Type in something'), 300);
+        setTimeout(() => (input.placeholder = placeholder), 1000);
     }
     else {
         input.placeholder = '💩';
-        setTimeout(() => (input.placeholder = 'Spell properly'), 500);
+        setTimeout(() => (input.placeholder = 'Spell properly'), 300);
+        setTimeout(() => (input.value = value), 1000);
     }
     input.value = '';
     headline.textContent = 'Y U NO forecast?';
